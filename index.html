@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mega Feirão | Oferta Galáctica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            /* FUNDO: Espaço Cósmico Profundo */
+            background: radial-gradient(circle at center, #1a1a2e 0%, #16213e 40%, #0f172a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+            color: #fff;
+        }
+
+        /* Estrelas Cintilantes */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: twinkle 4s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Nebulosa Suave no Fundo */
+        .nebula {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, rgba(255, 0, 222, 0.05) 50%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 1;
+            animation: nebulaPulse 15s infinite alternate;
+        }
+
+        @keyframes nebulaPulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .loader-card {
+            width: 90%;
+            max-width: 420px;
+            /* CARTÃO: Vidro Escuro (Dark Glassmorphism) */
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 60px 35px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Brilho dourado sutil na borda superior */
+        .loader-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, #ff9000, transparent);
+        }
+
+        .main-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 44px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            /* TÍTULO: Degradê Estelar */
+            background: linear-gradient(135deg, #fff 0%, #ffba08 50%, #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255, 186, 8, 0.3));
+        }
+
+        .sub-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 400;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+        }
+
+        .p-bar-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            height: 24px;
+            padding: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .p-bar-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 50px;
+            /* BARRA: Degradê Violeta/Azul Profundo */
+            background: linear-gradient(90deg, #7000ff, #0072ff);
+            box-shadow: 0 0 20px rgba(112, 0, 255, 0.6);
+            transition: width 0.3s ease-out;
+        }
+
+        .percentage {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 50px;
+            font-weight: 900;
+            margin-top: 25px;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .action-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 22px 50px;
+            /* BOTÃO: Ouro Velho Sólido */
+            background: #ffba08;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 186, 8, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 186, 8, 0.5);
+            background: #ffc32b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nebula"></div>
+
+    <script>
+        // Gerar estrelas aleatórias no fundo
+        for (let i = 0; i < 60; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            let size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDelay = Math.random() * 4 + 's';
+            document.body.appendChild(star);
+        }
+    </script>
+
+    <div class="loader-card">
+        <div class="main-title">MEGA FEIRÃO</div>
+        <div class="sub-text">🌌 Alinhando as estrelas para sua oferta...</div>
+
+        <div class="p-bar-container">
+            <div id="barFill" class="p-bar-fill"></div>
+        </div>
+
+        <div id="statusText" class="percentage">0%</div>
+
+        <a href="https://mellifluous-scone-d4d4aa.netlify.app/" class="action-btn">
+            ACESSAR OFERTA
+        </a>
+    </div>
+
+    <script>
+        let p = 0;
+        const barFill = document.getElementById('barFill');
+        const statusText = document.getElementById('statusText');
+
+        const loading = setInterval(() => {
+            p += Math.floor(Math.random() * 3) + 1; // Carregamento mais cadenciado
+            
+            if (p >= 100) {
+                p = 100;
+                clearInterval(loading);
+                statusText.innerText = "PRONTO!";
+                statusText.style.color = "#ffba08"; // Cor dourada no final
+                statusText.style.textShadow = "0 0 20px rgba(255, 186, 8, 0.6)";
+            } else {
+                statusText.innerText = p + "%";
+            }
+            
+            barFill.style.width = p + "%";
+        }, 75);
+    </script>
+</body>
+</html>
