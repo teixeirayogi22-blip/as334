@@ -3,206 +3,219 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mega Feirão | Oferta Galáctica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Expo Vantagens | Acesso Exclusivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2563eb; /* Azul Moderno */
+            --secondary: #7c3aed; /* Roxo */
+            --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+        }
+
         body {
             margin: 0;
-            height: 100vh;
-            font-family: 'Open Sans', sans-serif;
-            /* FUNDO: Espaço Cósmico Profundo */
-            background: radial-gradient(circle at center, #1a1a2e 0%, #16213e 40%, #0f172a 100%);
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .hero-section {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            text-align: center;
-            color: #fff;
+            padding: 40px 20px;
+            background: var(--bg-gradient);
         }
 
-        /* Estrelas Cintilantes */
-        .star {
-            position: absolute;
+        .main-card {
+            width: 100%;
+            max-width: 480px;
             background: white;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: twinkle 4s infinite alternate;
+            border-radius: 32px;
+            padding: 50px 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* Nebulosa Suave no Fundo */
-        .nebula {
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, rgba(255, 0, 222, 0.05) 50%, rgba(0, 0, 0, 0) 70%);
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: 1;
-            animation: nebulaPulse 15s infinite alternate;
-        }
-
-        @keyframes nebulaPulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.2); opacity: 1; }
-        }
-
-        .loader-card {
-            width: 90%;
-            max-width: 420px;
-            /* CARTÃO: Vidro Escuro (Dark Glassmorphism) */
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 30px;
-            padding: 60px 35px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Brilho dourado sutil na borda superior */
-        .loader-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, #ff9000, transparent);
-        }
-
-        .main-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 44px;
-            font-weight: 900;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            /* TÍTULO: Degradê Estelar */
-            background: linear-gradient(135deg, #fff 0%, #ffba08 50%, #fff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(255, 186, 8, 0.3));
-        }
-
-        .sub-text {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 400;
-            margin-bottom: 40px;
+        .status-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 25px;
             letter-spacing: 0.5px;
         }
 
-        .p-bar-container {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50px;
-            height: 24px;
-            padding: 3px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .p-bar-fill {
-            height: 100%;
-            width: 0%;
-            border-radius: 50px;
-            /* BARRA: Degradê Violeta/Azul Profundo */
-            background: linear-gradient(90deg, #7000ff, #0072ff);
-            box-shadow: 0 0 20px rgba(112, 0, 255, 0.6);
-            transition: width 0.3s ease-out;
-        }
-
-        .percentage {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 50px;
-            font-weight: 900;
-            margin-top: 25px;
-            color: #fff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-        }
-
-        .action-btn {
+        .status-tag span {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            margin-right: 8px;
             display: inline-block;
-            margin-top: 40px;
-            padding: 22px 50px;
-            /* BOTÃO: Ouro Velho Sólido */
-            background: #ffba08;
-            color: #0f172a;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 34px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .headline span {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtext {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #64748b;
+            margin-bottom: 35px;
+        }
+
+        .cta-box {
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .cta-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .cta-item:last-child { margin-bottom: 0; }
+
+        .cta-item svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            color: var(--primary);
+        }
+
+        .btn-main {
+            display: block;
+            background: #1e293b;
+            color: white;
             text-decoration: none;
-            border-radius: 50px;
+            padding: 22px;
+            border-radius: 18px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 19px;
+            font-size: 18px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 186, 8, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .action-btn:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(255, 186, 8, 0.5);
-            background: #ffc32b;
+        .btn-main:hover {
+            background: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        footer {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .legal-links a {
+            color: #64748b;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 20px auto 0;
+            line-height: 1.5;
+            font-size: 11px;
         }
     </style>
 </head>
 <body>
 
-    <div class="nebula"></div>
-
-    <script>
-        // Gerar estrelas aleatórias no fundo
-        for (let i = 0; i < 60; i++) {
-            let star = document.createElement('div');
-            star.className = 'star';
-            let size = Math.random() * 3 + 'px';
-            star.style.width = size;
-            star.style.height = size;
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.animationDelay = Math.random() * 4 + 's';
-            document.body.appendChild(star);
-        }
-    </script>
-
-    <div class="loader-card">
-        <div class="main-title">MEGA FEIRÃO</div>
-        <div class="sub-text">🌌 Alinhando as estrelas para sua oferta...</div>
-
-        <div class="p-bar-container">
-            <div id="barFill" class="p-bar-fill"></div>
+    <header>
+        <div style="font-weight: 800; font-size: 18px; color: #1e293b; letter-spacing: -0.5px;">
+            EXPO<span style="color: #2563eb;">VANTAGENS</span>
         </div>
+    </header>
 
-        <div id="statusText" class="percentage">0%</div>
+    <main class="hero-section">
+        <div class="main-card">
+            <div class="status-tag">
+                <span></span> CONDIÇÕES DISPONÍVEIS
+            </div>
 
-        <a href="https://mellifluous-scone-d4d4aa.netlify.app/" class="action-btn">
-            ACESSAR OFERTA
-        </a>
-    </div>
-
-    <script>
-        let p = 0;
-        const barFill = document.getElementById('barFill');
-        const statusText = document.getElementById('statusText');
-
-        const loading = setInterval(() => {
-            p += Math.floor(Math.random() * 3) + 1; // Carregamento mais cadenciado
+            <h1 class="headline">Sua <span>Seleção Exclusiva</span> está pronta.</h1>
             
-            if (p >= 100) {
-                p = 100;
-                clearInterval(loading);
-                statusText.innerText = "PRONTO!";
-                statusText.style.color = "#ffba08"; // Cor dourada no final
-                statusText.style.textShadow = "0 0 20px rgba(255, 186, 8, 0.6)";
-            } else {
-                statusText.innerText = p + "%";
-            }
-            
-            barFill.style.width = p + "%";
-        }, 75);
-    </script>
+            <p class="subtext">
+                Analisamos as melhores oportunidades do mercado e consolidamos as condições ideais para o seu perfil.
+            </p>
+
+            <div class="cta-box">
+                <div class="cta-item">
+                    <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    Acesso imediato via portal seguro.
+                </div>
+                <div class="cta-item">
+                    <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    Atualizado conforme novos critérios.
+                </div>
+            </div>
+
+            <a href="https://mellifluous-scone-d4d4aa.netlify.app/" class="btn-main">
+                VISUALIZAR AGORA
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="legal-links">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos de Uso</a>
+            <a href="#">Contato</a>
+        </div>
+        <div class="disclaimer">
+            <p>&copy; 2026 Expo Vantagens. Todos os direitos reservados.</p>
+            <p>Aviso: Este site não é afiliado ao Google, Meta ou qualquer entidade governamental. Os resultados podem variar de acordo com o perfil de cada usuário e as políticas vigentes dos parceiros.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
